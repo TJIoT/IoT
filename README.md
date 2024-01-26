@@ -32,25 +32,25 @@
 
 **发布端：**
 
-![](img\publish.png)
+![img\publish.png](https://github.com/TJIoT/IoT/blob/main/img/publish.png)
 
 **订阅端：**
 
 登录
 
-![](img\login.png)
+![img\login.png](https://github.com/TJIoT/IoT/blob/main/img/login.png)
 
 订阅
 
-![](img\subscribe.png)
+![img\subscribe.png](https://github.com/TJIoT/IoT/blob/main/img/subscribe.png)
 
 数据可视化
 
-![](img\visualization.png)
+![img\visualization.png](https://github.com/TJIoT/IoT/blob/main/img/visualization.png)
 
 数据预测
 
-![](img\image.png)
+![img\image.png](https://github.com/TJIoT/IoT/blob/main/img/image.png)
 
 
 
