@@ -1,0 +1,7 @@
+/* Figma Styles of your File */
+:root {
+  --app-width: 100vw;
+  --app-height: 100vh;
+  --max-app-width: 1440px;
+  --max-app-height: 1024px;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/vars.css" />
+    <link rel="stylesheet" href="../static/style.css" />
+    <link rel="icon" href="../static/favicon.ico" />
+    <style>
+      a,
+      button,
+      input,
+      select,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      * {
+        margin: 0;
+        padding: 0;
+        border: none;
+        text-decoration: none;
+        appearance: none;
+        background: none;
+
+        -webkit-font-smoothing: antialiased;
+      }
+    </style>
+    <title>IoT数据订阅端</title>
+  </head>
+  <body>
+    <div class="register-page">
+      <form method="post">
+        <label for="ClientID" class="client-id">Client ID:</label>
+        <input class="input-ClientID" type="text" placeholder="Enter ClientID" name="ClientID" id="ClientID"/>
+
+        <label for="access_key_id" class="access-key-id">AccessKey ID:</label>
+        <input class="input-AccessKeyID" type="text" placeholder="Enter AccessKey ID" name="access_key_id" id="access_key_id"/>
+
+        <label for="access_secret" class="access-key-secret">AccessKey Secret:</label>
+        <input class="input-AccessKeySecret" type="password" placeholder="Enter AccessKey Secret" name="access_secret" id="access_secret"/>
+
+        <input class="rectangle-4" type="submit" value="subscribe">
+      </form>
+      <div class="rectangle-6"></div>
+      <div class="rectangle-7"></div>
+      <div class="io-t-client-platform-thp-data-sensor-subscription">
+        IoT Client Platform
+        <br />
+        THP Data sensor subscription
+      </div>
+      <img class="illustration" src="../static/computer.png" alt="Illustration" />
+      <div class="rectangle-62"></div>
+      <div class="rectangle-5"></div>
+    </div>
+  </body>
+</html>

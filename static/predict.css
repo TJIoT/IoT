@@ -1,0 +1,123 @@
+.subscriber-app {
+    background: linear-gradient(135deg,
+            rgba(37, 46, 77, 1) 0%,
+            rgba(21, 24, 45, 1) 100%);
+    width: var(--app-width);
+    height: var(--app-height);
+    position: relative;
+    box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.right-botton-light {
+    background: linear-gradient(135deg,
+            rgba(250, 178, 255, 1) 0%,
+            rgba(25, 4, 229, 1) 100%);
+    border-radius: 50%;
+    width: 30vw;
+    height: 30vw;
+    position: absolute;
+    left: 93%;
+    top: 62%;
+    filter: blur(250px);
+}
+
+.left-up-light {
+    background: linear-gradient(135deg,
+            rgba(250, 178, 255, 1) 0%,
+            rgba(25, 4, 229, 1) 100%);
+    border-radius: 50%;
+    width: 29vw;
+    height: 29vw;
+    position: absolute;
+    left: -18%;
+    top: -13%;
+    filter: blur(250px);
+}
+
+.tong-ji {
+    color: #ffffff;
+    text-align: left;
+    font-family: "KronaOne-Regular", sans-serif;
+    font-size: 1.5vw;
+    text-transform: uppercase;
+    position: absolute;
+    left: 4%;
+    top: 7%;
+}
+
+.thp-data-publish {
+    text-align: left;
+    font-family: "Manrope-Bold", sans-serif;
+    line-height: 5vw;
+    font-weight: 700;
+    position: absolute;
+    left: 4%;
+    top: 18%;
+}
+
+.thp-data-publish-span {
+    color: #ffffff;
+    font-family: "Manrope-Bold", sans-serif;
+    font-size: 6vw;
+}
+
+.thp-data-subscriber-span2 {
+    color: #6ab3f6;
+    font-family: "Manrope-Bold", sans-serif;
+    font-size: 6vw;
+}
+
+.chart-container {
+    position: absolute;
+    background: #e1e0e0;
+    /* 内边距 */
+    overflow-y: auto;
+    border-radius: 2vw;
+    width: 80vw;
+    height: 54vh;
+    left: 5vw;
+    margin-top: 250px;
+    margin-left: 90px;
+    top: 30vh;
+    padding: 3vh 5vw;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+}
+
+.chart-container1 {
+    width: 80vw;
+    height: 54vh;
+}
+
+.chart-container2 {
+    width: 80vw;
+    height: 54vh;
+}
+
+.chart-container3 {
+    width: 80vw;
+    height: 54vh;
+}
+
+
+.title {
+    color: #706af6;
+    text-align: right;
+    font-family: "OpenSans-Bold", sans-serif;
+    font-size: 3vw;
+    font-weight: 700;
+    position: absolute;
+    right: 36%;
+    top: 25%;
+    width: 30vw;
+}
+
+.illustration {
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    bottom: auto;
+    width: 23vw;
+}

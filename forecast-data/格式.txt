@@ -1,0 +1,36 @@
+{
+    "deviceType":"CustomCategory",
+    "iotId":"6kKJ5DcsITYMMbJdQvYdk0kqp0",
+    "requestId":"123",
+    "checkFailedData":
+        {
+            "DetectTime":
+            {
+                "code":6311,
+                "message":"tsl parse: date type must be a string of long(UTC ms) -> DetectTime",
+                "time":1703382443155,
+                value":1703382446643
+            }
+        },
+    "productKey":"k0kqpFwvVRy",
+    "gmtCreate":1703382443159,
+    "deviceName":"THP-DataSystems",
+    "items":
+        {
+        "CurrentHumidity":
+        {
+            "value":80,
+            "time":1703382443155
+        },
+        "CurrentTemperature":
+        {
+            "value":7,
+            "time":1703382443155
+        },
+        "CurrentPressure": 
+        {
+            "value":1044,
+            "time":1703382443155
+        }
+    }
+}

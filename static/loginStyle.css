@@ -1,0 +1,218 @@
+.register-page,
+.register-page * {
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* 全局样式 */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 填满整个网页的样式 */
+.register-page {
+  background: #ebefff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+a,
+button,
+input,
+select,
+h1,
+h2,
+h3,
+h4,
+h5,
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  text-decoration: none;
+  appearance: none;
+  background: none;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+}
+
+.input-ClientID {
+  background: rgba(175, 179, 255, 0);
+  border-radius: 50px;
+  border-style: solid;
+  border-color: #656ed3;
+  border-width: 1px;
+  width: 367px;
+  height: 34px;
+  position: absolute;
+  text-align: center;
+  left: 760px;
+  top: 238px;
+}
+
+.input-AccessKeyID {
+  background: rgba(175, 179, 255, 0);
+  border-radius: 50px;
+  border-style: solid;
+  border-color: #656ed3;
+  border-width: 1px;
+  width: 367px;
+  height: 34px;
+  position: absolute;
+  text-align: center;
+  left: 760px;
+  top: 313px;
+}
+
+.input-AccessKeySecret {
+  background: rgba(175, 179, 255, 0);
+  border-radius: 50px;
+  border-style: solid;
+  border-color: #656ed3;
+  border-width: 1px;
+  width: 367px;
+  height: 34px;
+  position: absolute;
+  text-align: center;
+  left: 760px;
+  top: 389px;
+}
+
+.client-id {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 760px;
+  top: 208px;
+}
+
+.subscribeButton {
+  position: absolute;
+  inset: 0;
+}
+
+.rectangle-4 {
+  background: #656ed3;
+  border-radius: 50px;
+  width: 365px;
+  height: 34px;
+  position: absolute;
+  left: 758px;
+  top: 459px;
+}
+
+.subscribe {
+  color: #ffffff;
+  text-align: left;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  position: absolute;
+  left: 908px;
+  top: 466px;
+}
+
+.access-key-id {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 762px;
+  top: 283px;
+}
+
+.access-key-secret {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  position: absolute;
+  left: 762px;
+  top: 359px;
+}
+
+.rectangle-6 {
+  background: #656ed3;
+  border-radius: 105.53px;
+  width: 635px;
+  height: 377px;
+  position: absolute;
+  left: 180.26px;
+  top: 510.09px;
+  transform-origin: 0 0;
+  transform: rotate(-97.17deg) scale(1, 1);
+}
+
+.rectangle-7 {
+  background: #afb3ff;
+  border-radius: 105.53px;
+  width: 635px;
+  height: 377px;
+  position: absolute;
+  left: 165px;
+  top: 536px;
+  transform-origin: 0 0;
+  transform: rotate(-90deg) scale(1, 1);
+}
+
+.io-t-client-platform-thp-data-sensor-subscription {
+  color: #1a1a1a;
+  text-align: center;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  position: absolute;
+  left: 767px;
+  top: 114px;
+}
+
+.illustration {
+  position: absolute;
+  right: 45.39%;
+  left: 12.73%;
+  width: 41.88%;
+  bottom: 7.08%;
+  top: 24.58%;
+  height: 68.33%;
+}
+
+.rectangle-62 {
+  background: #afb3ff;
+  border-radius: 105.53px;
+  width: 553.74px;
+  height: 131.21px;
+  position: absolute;
+  left: 1368.76px;
+  top: 1015.08px;
+  transform-origin: 0 0;
+  transform: rotate(-135.618deg) scale(1, 1);
+}
+
+.rectangle-5 {
+  background: #838cf1;
+  border-radius: 105.53px;
+  width: 596.73px;
+  height: 141.4px;
+  position: absolute;
+  left: 1290.71px;
+  top: 1063.45px;
+  transform-origin: 0 0;
+  transform: rotate(-136.48deg) scale(1, 1);
+}

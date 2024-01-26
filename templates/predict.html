@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数据预测</title>
+    <link rel="stylesheet" href="../static/vars.css" />
+    <link rel="stylesheet" href="../static/predict.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/favicon.ico" />
+    <style>
+        a,
+        button,
+        input,
+        select,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            text-decoration: none;
+            appearance: none;
+            background: none;
+
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="subscriber-app">
+        <div class="right-botton-light"></div>
+        <div class="left-up-light"></div>
+        <div class="tong-ji">
+            TongJi Univesity
+            <br />
+            Software Engineering
+        </div>
+        <div class="thp-data-publish">
+            <span>
+                <span class="thp-data-publish-span">
+                    THP-Data
+                </span>
+                <span class="thp-data-subscriber-span2">Prediction</span>
+            </span>
+        </div>
+
+        <img class="illustration" src="../static/computer.png" alt="Illustration of Computers" />
+        <div class="chart-container">
+            <span>
+                红色曲线为真实数据
+                蓝色曲线为预测数据
+            </span>
+            <!-- 图一所占空间 -->
+            <div id="chart1" class="chart-container1"></div>
+
+            <!-- 图二所占空间 -->
+            <div id="chart2" class="chart-container2"></div>
+
+            <!-- 图三所占空间 -->
+            <div id="chart3" class="chart-container3"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var Chart1 = echarts.init(document.getElementById('chart1')); // 初始化 ECharts 实例
+            var Chart2 = echarts.init(document.getElementById('chart2'));// 初始化 ECharts 实例
+            var Chart3 = echarts.init(document.getElementById('chart3')); // 初始化 ECharts 实例
+            function fetchData() {
+                $.ajax({
+                    url: '/predict', // 后端 API 的路径
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.isSuccess) {
+                            console.log(data);
+                            var options1 = {
+                                xAxis: {
+                                    type: 'category',
+                                    name: 'time',
+                                    data: data.data[0].x_data,
+                                    axisLabel: {
+                                        interval: 0, // 设置横坐标标签的显示间隔为0，表示全部显示
+                                        //interval: Math.ceil(data.x_data.length / 10), // 根据数据量动态计算间隔
+                                        rotate: 25, // 设置坐标标签旋转角度为45度
+                                    }
+                                },
+                                yAxis: {
+                                    type: 'value',
+                                    name: data.data[0].type,
+                                    min: (data.data[0].type == 'pressure' ? function (value) { return value.min - 5; } : null),
+                                    max: (data.data[0].type == 'pressure' ? function (value) { return value.max + 5; } : null),
+                                },
+                                series: [
+                                    {
+                                        data: data.data[0].py_data,
+                                        type: 'line',
+                                        smooth: true,
+                                        itemStyle: {
+                                            color: 'blue' // 第一条曲线的颜色
+                                        }
+                                    },
+                                    {
+                                        data: data.data[0].ry_data,
+                                        type: 'line',
+                                        smooth: true,
+                                        itemStyle: {
+                                            color: 'red' // 第二条曲线的颜色
+                                        }
+                                    }
+                                ],
+                            };
+                            console.log(options1.legend);
+                            Chart1.setOption(options1); // 应用数据到图表
+                            var options2 = {
+                                xAxis: {
+                                    type: 'category',
+                                    name: 'time',
+                                    data: data.data[1].x_data,
+                                    axisLabel: {
+                                        interval: 0, // 设置横坐标标签的显示间隔为0，表示全部显示
+                                        //interval: Math.ceil(data.x_data.length / 10), // 根据数据量动态计算间隔
+                                        rotate: 25, // 设置坐标标签旋转角度为45度
+                                    }
+                                },
+                                yAxis: {
+                                    type: 'value',
+                                    name: data.data[1].type,
+                                    min: (data.data[1].type == 'pressure' ? function (value) { return value.min - 5; } : null),
+                                    max: (data.data[1].type == 'pressure' ? function (value) { return value.max + 5; } : null),
+                                },
+                                series: [
+                                    {
+                                        data: data.data[1].py_data,
+                                        type: 'line',
+                                        smooth: true,
+                                        itemStyle: {
+                                            color: 'blue' // 第一条曲线的颜色
+                                        }
+                                    },
+                                    {
+                                        data: data.data[1].ry_data,
+                                        type: 'line',
+                                        smooth: true,
+                                        itemStyle: {
+                                            color: 'red' // 第二条曲线的颜色
+                                        }
+                                    }
+                                ]
+                            };
+                            Chart2.setOption(options2); // 应用数据到图表
+                            var options3 = {
+                                xAxis: {
+                                    type: 'category',
+                                    name: 'time',
+                                    data: data.data[2].x_data,
+                                    axisLabel: {
+                                        interval: 0, // 设置横坐标标签的显示间隔为0，表示全部显示
+                                        //interval: Math.ceil(data.x_data.length / 10), // 根据数据量动态计算间隔
+                                        rotate: 25, // 设置坐标标签旋转角度为45度
+                                    }
+                                },
+                                yAxis: {
+                                    type: 'value',
+                                    name: data.data[2].type,
+                                    min: (data.data[2].type == 'pressure' ? function (value) { return value.min - 5; } : null),
+                                    max: (data.data[2].type == 'pressure' ? function (value) { return value.max + 5; } : null),
+                                },
+                                series: [
+                                    {
+                                        data: data.data[2].py_data,
+                                        type: 'line',
+                                        smooth: true,
+                                        itemStyle: {
+                                            color: 'blue' // 第一条曲线的颜色
+                                        }
+                                    },
+                                    {
+                                        data: data.data[2].ry_data,
+                                        type: 'line',
+                                        smooth: true,
+                                        itemStyle: {
+                                            color: 'red' // 第二条曲线的颜色
+                                        }
+                                    }
+                                ]
+                            };
+                            Chart3.setOption(options3); // 应用数据到图表
+
+                        } else {
+                            console.error('Failed to load data');
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error(`AJAX Request failed: ${textStatus}`, errorThrown);
+                    }
+
+
+
+
+                });
+
+            }
+            fetchData();
+            Chart1.resize(); // 重新调整图表大小以适应容器
+            Chart2.resize(); // 重新调整图表大小以适应容器
+            Chart3.resize(); // 重新调整图表大小以适应容器
+        });
+
+    </script>
+</body>
+
+</html>

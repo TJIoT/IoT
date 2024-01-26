@@ -1,0 +1,329 @@
+.publish-app,
+.publish-app * {
+    box-sizing: border-box;
+}
+
+.subscriber-app {
+    background: linear-gradient(135deg,
+            rgba(37, 46, 77, 1) 0%,
+            rgba(21, 24, 45, 1) 100%);
+    width: var(--app-width);
+    height: var(--app-height);
+    position: relative;
+    box-shadow: 0px 20px 50px 0px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.right-botton-light {
+    background: linear-gradient(135deg,
+            rgba(250, 178, 255, 1) 0%,
+            rgba(25, 4, 229, 1) 100%);
+    border-radius: 50%;
+    width: 30vw;
+    height: 30vw;
+    position: absolute;
+    left: 93%;
+    top: 62%;
+    filter: blur(250px);
+}
+
+.left-up-light {
+    background: linear-gradient(135deg,
+            rgba(250, 178, 255, 1) 0%,
+            rgba(25, 4, 229, 1) 100%);
+    border-radius: 50%;
+    width: 29vw;
+    height: 29vw;
+    position: absolute;
+    left: -18%;
+    top: -13%;
+    filter: blur(250px);
+}
+
+.tong-ji {
+    color: #ffffff;
+    text-align: left;
+    font-family: "KronaOne-Regular", sans-serif;
+    font-size: 1.5vw;
+    text-transform: uppercase;
+    position: absolute;
+    left: 4%;
+    top: 7%;
+}
+
+/* 连接按钮样式 */
+.connectIoT {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    left: 4%;
+    top: 67%;
+}
+
+.humidity,
+.pressure,
+.temperature {
+    color: #ffffff;
+    text-align: center;
+    font-family: "Manrope-Bold", sans-serif;
+    font-size: 1.2vw;
+    text-transform: none;
+    position: relative;
+}
+
+.button-humidity,
+.button-pressure,
+.button-temperature {
+    background: #6ab3f6;
+    width: 5vw;
+    border-radius: 50vw;
+    padding: 1vw 2vw;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+
+
+/* 订阅Post按钮样式 */
+.sub-topic {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    left: 4%;
+    top: 75%;
+}
+
+.button-disconnect {
+    background: #6ab3f6;
+    width: 5vw;
+    border-radius: 50vw;
+    margin-top: 2vw;
+    padding: 1vw 2vw;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.disconnect {
+    color: #ffffff;
+    text-align: center;
+    font-family: "Manrope-Bold", sans-serif;
+    font-size: 1.2vw;
+    text-transform: none;
+    position: relative;
+}
+
+
+/* 发布数据按钮样式 */
+.publish-data {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    left: 4%;
+    top: 83%;
+}
+
+.button-predict,
+.button-saveData {
+    background: #6ab3f6;
+    width: 5vw;
+    border-radius: 50vw;
+    margin-top: 2vw;
+    padding: 1vw 2vw;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+}
+
+
+.Predict,
+.saveData {
+    color: #ffffff;
+    text-align: center;
+    font-family: "Manrope-Bold", sans-serif;
+    font-size: 1.2vw;
+    text-transform: none;
+    position: relative;
+}
+
+
+
+/* 按钮样式 */
+.button-predict,
+.button-saveData,
+.button-disconnect,
+.button-pressure,
+.button-humidity,
+.button-temperature {
+    cursor: pointer;
+    z-index: 10;
+    text-transform: none;
+}
+
+.topic-subscriber {
+    color: #ffffff;
+    text-align: left;
+    font-family: "OpenSans-Bold", sans-serif;
+    font-size: 2.5vw;
+    position: absolute;
+    left: 4%;
+    top: 58%;
+    width: 28vw;
+}
+
+
+.thp-data-publish {
+    text-align: left;
+    font-family: "Manrope-Bold", sans-serif;
+    line-height: 5vw;
+    font-weight: 700;
+    position: absolute;
+    left: 4%;
+    top: 18%;
+}
+
+.thp-data-publish-span {
+    color: #ffffff;
+    font-family: "Manrope-Bold", sans-serif;
+    font-size: 6vw;
+}
+
+.thp-data-subscriber-span2 {
+    color: #6ab3f6;
+    font-family: "Manrope-Bold", sans-serif;
+    font-size: 6vw;
+}
+
+.intro {
+    color: #ffffff;
+    text-align: left;
+    font-family: "Manrope-Regular", sans-serif;
+    font-size: 1vw;
+    line-height: 2vw;
+    font-weight: 400;
+    opacity: 0.5;
+    position: absolute;
+    left: 4%;
+    top: 42%;
+    width: 30vw;
+}
+
+.publish {
+    position: absolute;
+    inset: 0;
+}
+
+.alllogs {
+    width: 50vw;
+    height: 10vh;
+    position: absolute;
+    right: 6%;
+    top: 32%;
+    padding: 1vw;
+    color: #ffffff;
+}
+
+.logs {
+    background: #e1e0e0;
+    border-radius: 2vw;
+    width: 50vw;
+    height: 54vh;
+    position: absolute;
+    right: 6%;
+    top: 38%;
+    padding: 1vw;
+    /* 内边距 */
+    overflow-y: auto;
+    /* 如果内容超出容器高度，允许滚动 */
+    /* display: flex; */
+
+}
+
+.alllogs label {
+    display: flex;
+    margin-right: 1rem;
+}
+
+.alllogs label::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 0.3rem;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.alllogs input[type="checkbox"]:checked+label::before {
+    background-color: #4214e9;
+    /* 设置选中时的背景色 */
+    border-color: #4214e9;
+    /* 设置选中时的边框颜色 */
+}
+
+.alllogs input[type="checkbox"] {
+    margin-right: 0.3rem;
+    display: none;
+}
+
+.title {
+    color: #706af6;
+    text-align: right;
+    font-family: "OpenSans-Bold", sans-serif;
+    font-size: 3vw;
+    font-weight: 700;
+    position: absolute;
+    right: 36%;
+    top: 25%;
+    width: 30vw;
+}
+
+.illustration {
+    position: absolute;
+    right: 4%;
+    top: 2%;
+    bottom: auto;
+    width: 25vw;
+}
+
+.input-wrapper {
+    display: inline-block;
+    /* 内联显示 */
+    /* vertical-align: middle; */
+    /* 垂直居中对齐 */
+
+    /* 设置高度 */
+    height: 1.2em;
+    /* 可根据需要调整高度 */
+    line-height: 1.2em;
+    /* 与高度保持一致，以确保文本垂直居中 */
+}
+
+.input-wrapper input[type="checkbox"],
+.input-wrapper label {
+    vertical-align: middle;
+    /* 垂直居中对齐 */
+}

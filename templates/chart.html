@@ -1,0 +1,125 @@
+<!--  chart.html  -->
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>数据可视化</title>
+    <link rel="stylesheet" href="../static/vars.css" />
+    <link rel="stylesheet" href="../static/chart.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../static/favicon.ico" />
+    <style>
+        a,
+        button,
+        input,
+        select,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            text-decoration: none;
+            appearance: none;
+            background: none;
+
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="subscriber-app">
+        <div class="right-botton-light"></div>
+        <div class="left-up-light"></div>
+        <div class="tong-ji">
+            TongJi Univesity
+            <br />
+            Software Engineering
+        </div>
+        <div class="thp-data-publish">
+            <span>
+                <span class="thp-data-publish-span">
+                    THP-Data
+                </span>
+                <span class="thp-data-subscriber-span2">Visualization</span>
+            </span>
+        </div>
+        <div class="getChart">
+            <div id="chart" class="chart-container">
+            </div>
+        </div>
+
+        <img class="illustration" src="../static/computer.png" alt="Illustration of Computers" />
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var topicType = '{{ variable }}'; // 从 Flask 模板获取变量
+            var apiUrl = '/chart?variable=' + encodeURIComponent(topicType); // 构建 API URL
+
+            var myChart = echarts.init(document.getElementById('chart')); // 初始化 ECharts 实例
+            function fetchData() {
+                $.ajax({
+                    url: apiUrl, // 后端 API 的路径
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data.isSuccess) {
+                            // var xData = data.x_data.map(function (str) {
+                            //     return new Date(str);
+                            // });
+                            // var xData = data.x_data.map(function (str) {
+                            //     return new Date(str).getTime(); // 将时间字符串转换为数值类型
+                            // });
+                            // var xData = data.x_data.map(function (str) {
+                            //     return new Date(str);
+                            // });
+                            var options = {
+                                xAxis: {
+                                    type: 'category',
+                                    name: 'time',
+                                    data: data.x_data,
+                                    axisLabel: {
+                                        interval: 'auto', // 设置横坐标标签的显示间隔为0，表示全部显示
+                                        //interval: Math.ceil(data.x_data.length / 10), // 根据数据量动态计算间隔
+                                        rotate: 25, // 设置坐标标签旋转角度为45度
+                                    }
+                                },
+                                yAxis: {
+                                    type: 'value',
+                                    name: data.type,
+                                    
+                                    min:(topicType=='pressure'? function(value) { return value.min - 5; } : null),
+                                    max:(topicType=='pressure'? function(value) { return value.max + 5; } : null),
+                                },
+                                series: [{
+                                    data: data.y_data,
+                                    type: 'line',
+                                    smooth: true
+                                }]
+                            };
+                            myChart.setOption(options); // 应用数据到图表
+                        } else {
+                            console.error('Failed to load data');
+                        }
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        console.error(`AJAX Request failed: ${textStatus}`, errorThrown);
+                    }
+                });
+            }
+
+            fetchData(); 
+            myChart.resize(); // 重新调整图表大小以适应容器
+        });
+    </script>
+</body>
+
+</html>

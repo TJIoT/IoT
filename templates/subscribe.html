@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/vars.css" />
+    <link rel="stylesheet" href="../static/subscribeStyle.css" />
+
+    <style>
+        a,
+        button,
+        input,
+        select,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+            text-decoration: none;
+            appearance: none;
+            background: none;
+
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+    <title>THP-Data Publish</title>
+</head>
+
+<body>
+    <div class="subscriber-app">
+        <div class="right-botton-light"></div>
+        <div class="left-up-light"></div>
+        <div class="tong-ji">
+            TongJi Univesity
+            <br />
+            Software Engineering
+        </div>
+        <div class="topic-subscriber">Visualization</div>
+        <div class="connectIoT">
+            <div class="button-temperature">
+                <div class="temperature">Temperature</div>
+            </div>
+            <div class="button-humidity">
+                <div class="humidity">Humidity</div>
+            </div>
+            <div class="button-pressure">
+                <div class="pressure">Pressure</div>
+            </div>
+        </div>
+        <div class="sub-topic">
+            <div class="button-disconnect">
+                <div class="disconnect">Disconnect</div>
+            </div>
+            <div class="button-predict">
+                <div class="Predict">Predict</div>
+            </div>
+            <div class="button-saveData">
+                <div class="saveData">SaveData</div>
+            </div>
+        </div>
+        <div class="thp-data-publish">
+            <span>
+                <span class="thp-data-publish-span">
+                    THP-Data
+                    <br />
+                </span>
+                <span class="thp-data-subscriber-span2">Subscriber</span>
+            </span>
+        </div>
+
+        <div class="intro">
+            You can subscribe to temperature, humidity, and barometric pressure topics within this product
+            and visualize the data.
+            Furthermore, you can utilize historical information for prediction.
+        </div>
+        <div class="publish">
+            <div class="alllogs">
+                <div class="input-wrapper">
+                    <input type="checkbox" id="temperature" name="topic" value="temperature">
+                    <label for="temperature">temperature</label>
+                </div>
+                <div class="input-wrapper">
+                    <input type="checkbox" id="humidity" name="topic" value="humidity">
+                    <label for="humidity">humidity</label>
+                </div>
+                <div class="input-wrapper">
+                    <input type="checkbox" id="pressure" name="topic" value="pressure">
+                    <label for="pressure">pressure</label>
+                </div>
+            </div>
+            <div class="title">Subscribe Logs</div>
+            <div class="logs">
+
+            </div>
+        </div>
+
+        <img class="illustration" src="../static/computer.png" alt="Illustration of Computers" />
+    </div>
+
+    <!-- ...（按键脚本）... -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var connected = false;  // 跟踪连接状态
+            var statusInterval; // 用于定期检查发布状态的变量
+            var publishing = false; // 跟踪是否正在发布数据
+
+
+            function updateLog(timestamp, message) {
+                $('.logs').append('<div>' + timestamp + ': ' + message + '</div>');
+            }
+            function dataLog(timestamp, message) {
+                $('.logs').append('<div>' + timestamp + ': ' + '</div>');
+                $('.logs').append('<div>' + message + '</div>');
+            }
+            function Log(message) {
+                $('.logs').append('<div>' + message + '</div>');
+            }
+            var topicType;//用来记录可视化选择的按钮类型
+
+            //下面三个接口为数据可视化接口
+            $('.button-pressure').click(function () {
+                window.location.href = "/getChart?variable=pressure"; // 重定向到 /getChart 路由，并传递变量
+
+            });
+
+            $('.button-humidity').click(function () {
+                window.location.href = "/getChart?variable=humidity"; // 重定向到 /getChart 路由，并传递变量
+
+            });
+
+            $('.button-temperature').click(function () {
+                window.location.href = "/getChart?variable=temperature"; // 重定向到 /getChart 路由，并传递变量
+
+            });
+
+            //监听器从click改为change，在复选框状态发生变化时触发事件
+            $('.alllogs input[type="checkbox"]').on('change', function () {
+                //根据复选框的状态，创建一个包含复选框名称和值的对象data.如果复选框被选中this.checked
+                //为true，将复选框的值赋给data，复选框被取消选中，this.checked为false，将空字符串赋给data对象。
+                const data = {
+                    [this.name]: this.value,
+                    'checked': this.checked ? '1' : '0'
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/subTopic',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        if (response.message != '')
+                            updateLog(response.timestamp, response.message);
+                    },
+                    error: function () {
+                        Log('Error: Unable to subscribe.');
+                    }
+                });
+            });
+
+            //断开连接
+            $('.button-disconnect').click(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/disconnect',
+                    success: function (response) {
+                        // 如果成功断开连接，跳转到登录页面
+                        window.location.href = '/';
+                    },
+                    error: function () {
+                        Log('Error: Unable to disconnect.');
+                    }
+                });
+            });
+
+            //预测
+            $('.button-predict').click(function () {
+                window.location.href = "/getPredict"; // 重定向
+            });
+
+            //保存数据文件接口
+            $('.button-saveData').click(function () {
+                $.ajax({
+                    type: 'POST',
+                    url: '/saveData',
+                    success: function (response) {
+                        connected = response.status === 'success';
+                        updateLog(response.timestamp, response.message);
+                        console.log(response);
+                    },
+                    error: function () {
+                        Log('Error: Unable to save.');
+                    }
+                });
+            });
+
+            //调用 checkPublishStatus() 函数，并设置每隔一段时间执行一次
+            setInterval(checkPublishStatus, 1000); // 每隔1秒调用一次
+            function checkPublishStatus() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/publishStatus',
+                    url: '/TopicData',
+                    success: function (response) {
+                        connected = response.status;
+                        console.log(response);
+                        //dataLog(response.timestamp, response.message);
+                        if (response.message != '')
+                            dataLog(response.timestamp, response.message);
+                    }
+                });
+            }
+        });
+
+    </script>
+</body>
+
+</html>
